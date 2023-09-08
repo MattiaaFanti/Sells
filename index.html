@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang='en' class=''>
 
@@ -49,6 +48,7 @@ body {
   text-align: center;
   overflow: hidden;
   transition: 0.5s ease;
+z-index: 1;
 }
 .container .card:hover {
   transform: translatey(-15px);
@@ -73,23 +73,28 @@ body {
   height: 100%;
   background-color: rgba(255, 255, 255, 0.03);
   pointer-events: none;
+z-index: 1;
 }
-.container .percent {
-  position: relative;
+.card .percent {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  margin: 0 auto;
   width: 150px;
   height: 150px;
   border-radius: 50%;
   box-shadow: inset 0 0 50px #000;
   background-color: #222;
-  z-index: 1;
 }
-.container .percent h3 {
+.card .percent h3 {
   margin-top: 16px;
-  color: #777;
+  color: #fff;
   font-size: 22px;
   transition: 0.5s ease;
 }
-.container .percent .number {
+.card .percent .number {
   position: absolute;
   top: 0;
   left: 0;
@@ -97,24 +102,24 @@ body {
   height: 100%;
   border-radius: 50%;
 }
-.container .percent .number h2 {
-  color: #777;
+.card .percent .number h2 {
+  color: #fff;
   font-size: 44px;
   transition: 0.5s ease;
 }
-.container .percent .number h2 span {
-  color: #777;
+.card .percent .number h2 span {
+  color: #fff;
   padding-left: 3px;
   font-size: 24px;
   transition: 0.5s ease;
 }
-.container .percent svg {
+.card .percent svg {
   position: relative;
   width: 150px;
   height: 150px;
   transform: rotate(-85deg);
 }
-.container .percent svg circle {
+.card .percent svg circle {
   width: 100%;
   height: 100%;
   fill: none;
@@ -123,21 +128,25 @@ body {
   stroke-linecap: round;
   transform: translate(5px, 5px);
 }
-.container .percent svg circle:nth-child(2) {
+.card .percent svg circle:nth-child(2) {
   stroke-dasharray: 440;
   stroke-dashoffset: 440;
 }
-.container .card:nth-child(1) svg circle:nth-child(2) {
+.card .percent svg circle:nth-child(2) {
   stroke-dashoffset: calc(440px - (440px * 90) / 100);
   stroke: #63e2ff;
 }
-.container .card:nth-child(2) svg circle:nth-child(2) {
+.card .percent svg circle:nth-child(2) {
   stroke-dashoffset: calc(440px - (440px * 40) / 100);
   stroke: #d9e021;
 }
-.container .card:nth-child(3) svg circle:nth-child(2) {
+.card .percent svg circle:nth-child(2) {
   stroke-dashoffset: calc(440px - (440px * 60) / 100);
   stroke: #ed1e79;
+}
+.card .box {
+  position: relative;
+  z-index: 2;
 }
   </style>
 
@@ -151,8 +160,13 @@ body {
 <body>
   <div class="container">
   <div class="card">
+<div class="progress-bar">
+  <div class="progress-bar-inner">
+    <div class="progress-bar-progress"></div>
+  </div>
+</div>
    <div class="box">
-      <div class="image-container">
+ <div class="image-container">
       <img src="https://w7a7p5v9.rocketcdn.me/wp-content/uploads/2022/03/How-to-Tell-Good-Cannabis-From-Bad-Weed-1024x611.jpg" alt="image description">
     </div>
         <div class="percent">
